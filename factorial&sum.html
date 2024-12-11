@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial, Sum & Average Calculator</title>
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            background: url('lana.png') no-repeat center center fixed;
+            background-size: cover;
+            height: 100%;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 20px;
+        }
+
+        .calculator {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            width: 50%;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        a.button {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        a.button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Calculator: FACTORIAL, SUM & AVERAGE CALCULATOR</h3>
+        <div class="calculator">
+            <label for="input">Calculates the first "N" natural numbers.</label>
+            <input id="input" type="number" placeholder="Enter a number" min="1">
+            <button id="calculate">Calculate</button>
+            <p id="factorial1"></p>
+            <p id="sum2"></p>
+            <p id="average3"></p>
+        </div>
+        <h2><a href="index.html" class="button">HOME PAGE</a></h2>
+    </div>
+    <script>
+        document.getElementById("calculate").addEventListener("click", function() {
+            const n = parseInt(document.getElementById("input").value);
+            if (isNaN(n) || n < 1) {
+                alert("Please enter a valid number greater than 0");
+                return;
+            }
+
+            // Calculate Factorial
+            let factorial = 1;
+            for (let i = 1; i <= n; i++) {
+                factorial *= i;
+            }
+
+            // Calculate Sum
+            const sum = (n * (n + 1)) / 2;
+
+            // Calculate Average
+            const average = sum / n;
+
+            // Display Results
+            document.getElementById("factorial1").textContent = `Factorial: ${factorial}`;
+            document.getElementById("sum2").textContent = `Sum: ${sum}`;
+            document.getElementById("average3").textContent = `Average: ${average.toFixed(2)}`;
+        });
+    </script>
+</body>
+</html>

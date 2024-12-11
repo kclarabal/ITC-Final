@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONVERSION</title>
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            background: url('lana.png') no-repeat center center fixed;
+            background-size: cover;
+            height: 100%;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 20px;
+        }
+
+        .converter {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        h2 {
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .container1, .container2 {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            width: 45%;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        a.button {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        a.button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CONVERSION</h1>
+        <div class="converter">
+            <div class="container1">
+                <h2>Temperature Conversion</h2>
+                <label for="tempInput">Temperature:</label>
+                <input id="tempInput" type="number" placeholder="0">
+                <button id="CtoF">Celsius to Fahrenheit</button>
+                <button id="FtoC">Fahrenheit to Celsius</button>
+                <input type="number" id="tempResult" readonly placeholder="Result">
+            </div>
+
+            <div class="container2">
+                <h2>Measurement Conversion</h2>
+                <label for="meaInput">Measurement:</label>
+                <input id="meaInput" type="number" placeholder="0" min="0">
+                <button id="MtoF">Meters to Feet</button>
+                <button id="FtoM">Feet to Meters</button>
+                <input type="number" id="meaResult" readonly placeholder="Result">
+            </div>
+        </div>
+        <h2><a href="index.html" class="button">HOME PAGE</a></h2>
+    </div>
+    <script>
+        document.getElementById("CtoF").addEventListener("click", function() {
+            const celsius = parseFloat(document.getElementById("tempInput").value);
+            const fahrenheit = (celsius * 9/5) + 32;
+            document.getElementById("tempResult").value = fahrenheit.toFixed(2);
+        });
+
+        document.getElementById("FtoC").addEventListener("click", function() {
+            const fahrenheit = parseFloat(document.getElementById("tempInput").value);
+            const celsius = (fahrenheit - 32) * 5/9;
+            document.getElementById("tempResult").value = celsius.toFixed(2);
+        });
+
+        document.getElementById("MtoF").addEventListener("click", function() {
+            const meters = parseFloat(document.getElementById("meaInput").value);
+            const feet = meters * 3.28084;
+            document.getElementById("meaResult").value = feet.toFixed(2);
+        });
+
+        document.getElementById("FtoM").addEventListener("click", function() {
+            const feet = parseFloat(document.getElementById("meaInput").value);
+            const meters = feet / 3.28084;
+            document.getElementById("meaResult").value = meters.toFixed(2);
+        });
+    </script>
+</body>
+</html>
